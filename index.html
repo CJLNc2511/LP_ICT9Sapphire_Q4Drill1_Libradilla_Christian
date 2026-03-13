@@ -1,0 +1,111 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Practice Activity</title>
+
+        <style>
+            body{
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                text-align: center;
+                margin-top: 80px;
+                background-color: rgb(209, 210, 255);
+            }
+
+            .container{
+                background-color: rgb(44, 27, 115);
+                color: white;
+                padding: 20px;
+                width: 300px;
+                margin: auto;
+                border: 3px solid #000000;
+            }
+
+            input{
+                padding: 6px;
+                width: 80%;
+                margin-bottom: 10px;
+            }
+            button{
+                padding: 8px 15px;
+            }
+
+            output{
+                margin-top: 15px;
+                text-align: left;
+            }
+
+            image{
+                width: auto;
+
+            }
+        </style>
+    </head>
+    <body>
+        
+        <div class="container">
+       <h2> Electricity Classifier </h2>
+
+
+<img src="icon.png" alt="Electricity Icon" style="width:100px;">    
+
+
+<br><br>
+            <input type="number" id="usage" placeholder="Enter current kWh Usage">
+            <br> <br>
+            <button onclick="evaluateScore()"> EVALUATE</button>
+        
+            <div class="output">
+                <p id="status"></p>
+                <P id="grade"></p>
+            </div>
+
+        </div>
+
+        <script>
+            function evaluateScore(){
+                var usage = document.getElementById("usage").value;
+
+                if (usage < 0 ){
+                    alert("Enter kWh Usage");
+                    return;
+                }
+
+                var letterGrade ="";
+                if(usage <=100){letterGrade = "Lifeline Consumer";}
+                else if(usage <=200){letterGrade="Low Consumption";}
+                else if(usage <=300){letterGrade="Average Consumption";}
+                else if(usage <=500){letterGrade="High Consumption";}
+                else{letterGrade = "Very High Consumption";}
+
+                var gradeRemark ="";
+                switch(letterGrade){
+
+                    case "Lifeline Consumer":
+                        gradeRemark = "Discounted electricity rates";
+                        break;
+
+
+                    case "Low Consumption":
+                        gradeRemark = "Less than Average Consumption";
+                        break;
+
+
+                    case "Average Consumption":
+                        gradeRemark = "Average";
+                        break;
+
+                    default:
+                        gradeRemark = "Heavy electricity users";
+                        break;
+                
+            }
+
+            document.getElementById("status").innerHTML = "Category: " + letterGrade;
+            document.getElementById("grade").innerHTML = "Note: " + gradeRemark;
+            }
+        </script>
+
+    </body>
+    </html>
